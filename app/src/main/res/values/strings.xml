@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ITN Rechner</string>
+
+    <string-array name="sik">
+        <item>Sicher</item>
+        <item>Unsicher</item>
+    </string-array>
+
+    <string-array name="mode">
+        <item>Einzel</item>
+        <item>Doppel</item>
+    </string-array>
+</resources>

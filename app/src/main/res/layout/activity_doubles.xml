@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoublesActivity">
+
+    <Spinner
+        android:id="@+id/modeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/mode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/modeSpinner"
+        android:id="@+id/doublesField"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Heim"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Gast"
+                android:layout_marginLeft="10dp"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/editTextDu"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Du"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editTextGegner1"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="Gegner1"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextPartner"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Partner"
+                android:inputType="textPersonName"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/editTextGegner2"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="Gegner2"
+                android:inputType="textPersonName"
+                android:textAlignment="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioWinner"
+        android:layout_below="@id/doublesField"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gewonnen"
+            android:checked="true"
+            android:id="@+id/radioWon">
+
+        </RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verloren"
+            android:id="@+id/radioLost">
+
+        </RadioButton>
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Berechnen"
+        android:layout_below="@id/radioWinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:id="@+id/buttonCalculate"
+        >
+    </Button>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonCalculate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/textItnDif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ITN Veränderung:"></TextView>
+
+        <TextView
+            android:id="@+id/textNewItnDu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Neue ITN Du:"></TextView>
+
+        <TextView
+            android:id="@+id/textNewItnPartner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Neue ITN Partner:"></TextView>
+    </LinearLayout>
+
+</RelativeLayout>
