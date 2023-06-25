@@ -47,18 +47,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button searchButton = findViewById(R.id.buttonSearch);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editTextLastname = findViewById(R.id.lastname);
+                String lastname = editTextLastname.getText().toString().trim();
+                EditText editTextFirstname= findViewById(R.id.firstname);
+                String firstname = editTextFirstname.getText().toString().trim();
+                new PlayerSearchTask(MainActivity.this).execute(new PlayerSearchData.PlayerName(lastname, firstname));
+            }
+        });
+
         Button calcButton = findViewById(R.id.buttonCalculate);
         RadioGroup rgWinner = findViewById(R.id.radioWinner);
         // Click Listener for Calculating
         calcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editTextLastname = findViewById(R.id.lastname);
-                String lastname = editTextLastname.getText().toString();
-                EditText editTextFirstname= findViewById(R.id.firstname);
-                String firstname = editTextFirstname.getText().toString();
-                new PlayerSearchTask(MainActivity.this).execute(new PlayerSearchData.PlayerName(lastname, firstname));
-
                 EditText editTextItnYou = findViewById(R.id.editTextDu);
                 EditText editTextItnOpponent = findViewById(R.id.editTextGegner);
                 String itnYouString = editTextItnYou.getText().toString();

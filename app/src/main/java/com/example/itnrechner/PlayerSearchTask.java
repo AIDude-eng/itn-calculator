@@ -2,10 +2,14 @@ package com.example.itnrechner;
 
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
 
 public class PlayerSearchTask extends AsyncTask<PlayerSearchData.PlayerName, Void, PlayerSearchData>  {
 
@@ -22,14 +26,19 @@ public class PlayerSearchTask extends AsyncTask<PlayerSearchData.PlayerName, Voi
 
     @Override
     protected void onPostExecute(PlayerSearchData playerSearchData) {
+        LinearLayout l = activity.findViewById(R.id.playerResultsContainer);
+        l.removeAllViews();
         if (playerSearchData.data.getPlayers().length != 0 ){
-            PlayerSearchData.Player player = playerSearchData.data.getPlayers()[0];
-            ListView l = activity.findViewById(R.id.playerResults);
-            ArrayAdapter<String> arr;
-            String[] test = new String[] {player.getFirstname() + " " + player.getLastname() + " " + player.getFedRank()};
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
-                    android.R.layout.simple_list_item_1, test);
-            l.setAdapter(adapter);
+            PlayerSearchData.Player[] players = playerSearchData.data.getPlayers();
+            String[] results = Arrays.stream(players).map(p -> p.getFirstname() + " " + p.getLastname() + " (" + p.getBirthYear()+")" + " - ITN: " + p.getFedRank()).toArray(String[]::new);
+            for (int i = 0; i < results.length; i++) {
+                TextView playerText = new TextView(activity);
+                playerText.setText(results[i]);
+                playerText.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                l.addView(playerText);
+            }
         }
     }
 }

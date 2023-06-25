@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.zip.GZIPInputStream;
 
@@ -154,6 +155,10 @@ public class PlayerSearchData {
             }
             Gson gson = new Gson();
             PlayerSearchData data = gson.fromJson(reader, PlayerSearchData.class);
+
+            // correct results for lastname as ötv does not do it correctly
+            Player[] players = data.data.getPlayers();
+            data.data.players = Arrays.stream(players).filter(p -> p.getLastname().toLowerCase().contains(lastname.toLowerCase())).toArray(Player[]::new);
             return data;
 
         } catch (MalformedURLException ex) {
