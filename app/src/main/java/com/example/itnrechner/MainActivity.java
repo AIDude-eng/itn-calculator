@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         calcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EditText editTextLastname = findViewById(R.id.lastname);
+                String lastname = editTextLastname.getText().toString();
+                EditText editTextFirstname= findViewById(R.id.firstname);
+                String firstname = editTextFirstname.getText().toString();
+                new PlayerSearchTask(MainActivity.this).execute(new PlayerSearchData.PlayerName(lastname, firstname));
+
                 EditText editTextItnYou = findViewById(R.id.editTextDu);
                 EditText editTextItnOpponent = findViewById(R.id.editTextGegner);
                 String itnYouString = editTextItnYou.getText().toString();

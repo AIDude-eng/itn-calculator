@@ -20,8 +20,77 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/doublesField"
+            app:layout_constraintBottom_toTopOf="@+id/itnSearch"
             android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/itnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/modeSpinner"
+            app:layout_constraintBottom_toTopOf="@+id/playerResultsContainer"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="ITN Suche"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/playerNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/lastname"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nachname"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/firstname"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Vorname (opt.)"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/playerResultsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/itnSearch"
+            app:layout_constraintBottom_toTopOf="@+id/doublesField"
+            android:orientation="vertical"
+            tools:context=".ListActivity" >
+
+            <ListView
+                android:id="@+id/playerResults"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content" >
+            </ListView>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/doublesField"
@@ -30,9 +99,9 @@
             android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/modeSpinner"
+            app:layout_constraintTop_toBottomOf="@id/playerResultsContainer"
             app:layout_constraintBottom_toTopOf="@+id/radioWinner"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
