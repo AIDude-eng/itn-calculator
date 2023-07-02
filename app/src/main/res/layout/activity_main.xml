@@ -20,8 +20,23 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/playerDefaultContainer"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/playerDefaultContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/modeSpinner"
             app:layout_constraintBottom_toTopOf="@+id/itnSearch"
-            android:layout_marginTop="10dp"/>
+            android:orientation="vertical"
+            tools:context=".ListActivity"
+            android:textAlignment="center"
+            app:flow_verticalAlign="center"
+            android:layout_marginTop="5dp">
+        </TextView>
 
         <LinearLayout
             android:id="@+id/itnSearch"
@@ -30,9 +45,9 @@
             android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/modeSpinner"
+            app:layout_constraintTop_toBottomOf="@id/playerDefaultContainer"
             app:layout_constraintBottom_toTopOf="@+id/buttonSearch"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -46,6 +61,8 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:id="@+id/playerNames"
@@ -99,7 +116,6 @@
             android:textAlignment="center"
             app:flow_verticalAlign="center"
             android:layout_marginTop="10dp">
-
         </LinearLayout>
 
         <LinearLayout
@@ -111,27 +127,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/playerResultsContainer"
             app:layout_constraintBottom_toTopOf="@+id/radioWinner"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="10dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Heim"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Gast"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="ITN Rechner"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <LinearLayout
                 android:id="@+id/itnTxt"
@@ -143,7 +146,7 @@
                     android:id="@+id/editTextDu"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:hint="Du"
+                    android:hint="Deine ITN"
                     android:inputType="textPersonName"
                     android:textAlignment="center" />
 
@@ -152,7 +155,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:hint="Gegner"
+                    android:hint="Gegner ITN"
                     android:inputType="textPersonName"
                     android:textAlignment="center" />
             </LinearLayout>
@@ -168,7 +171,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/doublesField"
             app:layout_constraintBottom_toTopOf="@+id/sikField"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="10dp">
 
             <RadioButton
                 android:id="@+id/radioWon"

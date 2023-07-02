@@ -1,8 +1,13 @@
 package com.example.itnrechner;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.util.Optional;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         modeSpinner.setSelection(0);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
                     // Change to Doubles Activity
                     Intent intent = new Intent(MainActivity.this, DoublesActivity.class);
                     startActivity(intent);
+                } else if (modeSpinner.getSelectedItem().toString().equals("Doppel Aufstellung")) {
+                    // Change to Doubles Activity
+                    Intent intent = new Intent(MainActivity.this, DoublesLineupActivity.class);
+                    startActivity(intent);
                 }
             }
 
@@ -49,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button searchButton = findViewById(R.id.buttonSearch);
         searchButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 EditText editTextLastname = findViewById(R.id.lastname);
@@ -101,5 +113,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // check default license number in shared preferences
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String defaultValue = "";
+        String default_license = sharedPref.getString("default_license", defaultValue);
+        if (!default_license.isEmpty()) {
+            // if default license stored then search for player and insert itn into home field
+            new PlayerLicenseSearchTask(MainActivity.this).execute(new PlayerSearchData.PlayerName(default_license));
+        }
     }
 }

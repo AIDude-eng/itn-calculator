@@ -38,6 +38,10 @@ public class DoublesActivity extends AppCompatActivity {
                     // Change to Doubles Activity
                     Intent intent = new Intent(DoublesActivity.this, MainActivity.class);
                     startActivity(intent);
+                } else if (modeSpinner.getSelectedItem().toString().equals("Doppel Aufstellung")) {
+                    // Change to Doubles Activity
+                    Intent intent = new Intent(DoublesActivity.this, DoublesLineupActivity.class);
+                    startActivity(intent);
                 }
             }
 

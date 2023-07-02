@@ -1,8 +1,10 @@
 package com.example.itnrechner;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -23,25 +25,31 @@ import com.google.gson.Gson;
  */
 public class PlayerSearchData {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static class PlayerName {
-        private String lastname;
+        private Optional<String> lastname = Optional.empty();
         private Optional<String> firstname = Optional.empty();
-
-        public PlayerName(String lastname) {
-            this.lastname = lastname;
-        }
+        private Optional<String> license = Optional.empty();
 
         public PlayerName(String lastname, String firstname) {
-            this(lastname);
+            this.lastname = Optional.of(lastname);
             this.firstname = Optional.of(firstname);
+        }
+
+        public PlayerName(String license) {
+            this.license = Optional.of(license);
         }
 
         public Optional<String> getFirstname() {
             return firstname;
         }
 
-        public String getLastname() {
+        public Optional<String> getLastname() {
             return lastname;
+        }
+
+        public Optional<String> getLicense() {
+            return license;
         }
     }
 
@@ -130,17 +138,21 @@ public class PlayerSearchData {
     public boolean success;
     public Data data;
 
-    public static PlayerSearchData searchPlayers(String lastname, Optional<String> firstname) throws IllegalArgumentException {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static PlayerSearchData searchPlayers(Optional<String> lastname, Optional<String> firstname, Optional<String> license) throws IllegalArgumentException {
         String URL = "https://ooetv.oetv.at/?oetvappapi=1&apikey=asHwzb75fybdUz96HSfC3kvNvgavT69z&method=nu-players";
 
-        if (lastname == null) {
-            throw new IllegalArgumentException("lastname must be provided!");
+        if (license.isPresent()) {
+            URL += "&licence=" + license.get();
+        } else {
+            if (!lastname.isPresent()) {
+                throw new IllegalArgumentException("lastname must be provided!");
+            }
+            URL += "&lastname=" + lastname.get();
+            if (firstname.isPresent()) {
+                URL += "&firstname=" + firstname.get();
+            }
         }
-        URL += "&lastname=" + lastname;
-        if (firstname.isPresent()) {
-            URL += "&firstname=" + firstname.get();
-        }
-
         try {
             java.net.URL url = new java.net.URL(URL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -158,7 +170,9 @@ public class PlayerSearchData {
 
             // correct results for lastname as ötv does not do it correctly
             Player[] players = data.data.getPlayers();
-            data.data.players = Arrays.stream(players).filter(p -> p.getLastname().toLowerCase().contains(lastname.toLowerCase())).toArray(Player[]::new);
+            if (lastname.isPresent()) {
+                data.data.players = Arrays.stream(players).filter(p -> p.getLastname().toLowerCase().contains(lastname.get().toLowerCase()) && p.getFedRank() >= 1).toArray(Player[]::new);
+            }
             return data;
 
         } catch (MalformedURLException ex) {
