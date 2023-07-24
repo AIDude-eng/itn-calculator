@@ -54,12 +54,12 @@ public class DoublesLineupCalculator {
 
         @Override
         public String toString() {
-            return "[P1: " + player1.toString() + ", P2: " + player2.toString() + ", Gesamt ITN: " + getTeamITN() +  "]";
+            return player1.toString() + ", " + player2.toString() + ", Gesamt ITN: " + getTeamITN();
         }
 
         @Override
         public int compareTo(PlayerTeam p) {
-            return Double.compare(p.getTeamITN(), this.getTeamITN());
+            return Double.compare(this.getTeamITN(), p.getTeamITN());
         }
     }
 

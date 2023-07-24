@@ -147,7 +147,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:hint="Deine ITN"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
                 <EditText
@@ -156,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:hint="Gegner ITN"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textAlignment="center" />
             </LinearLayout>
 

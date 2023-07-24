@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     // Change to Doubles Activity
                     Intent intent = new Intent(MainActivity.this, DoublesActivity.class);
                     startActivity(intent);
-                } else if (modeSpinner.getSelectedItem().toString().equals("Doppel Aufstellung")) {
+                } else if (modeSpinner.getSelectedItem().toString().equals("Doppel Teams")) {
                     // Change to Doubles Activity
                     Intent intent = new Intent(MainActivity.this, DoublesLineupActivity.class);
                     startActivity(intent);

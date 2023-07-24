@@ -9,7 +9,7 @@
     <string-array name="mode">
         <item>Einzel</item>
         <item>Doppel</item>
-        <item>Doppel Aufstellung</item>
+        <item>Doppel Teams</item>
     </string-array>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>

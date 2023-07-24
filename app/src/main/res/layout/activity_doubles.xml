@@ -58,7 +58,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:hint="Du"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
                 <EditText
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:hint="Gegner1"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textAlignment="center" />
             </LinearLayout>
 
@@ -80,7 +80,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:hint="Partner"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textAlignment="center"/>
 
                 <EditText
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:hint="Gegner2"
-                    android:inputType="textPersonName"
+                    android:inputType="numberDecimal"
                     android:textAlignment="center"/>
             </LinearLayout>
         </LinearLayout>
@@ -120,15 +120,13 @@
         </RadioGroup>
 
         <Button
+            android:id="@+id/buttonCalculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Berechnen"
             android:layout_below="@id/radioWinner"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:id="@+id/buttonCalculate"
-            >
-        </Button>
+            android:text="Berechnen"></Button>
 
         <LinearLayout
             android:layout_width="wrap_content"

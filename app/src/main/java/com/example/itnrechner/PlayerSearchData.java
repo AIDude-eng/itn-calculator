@@ -20,8 +20,8 @@ import java.util.zip.GZIPInputStream;
 import com.google.gson.Gson;
 
 /**
- * Class object representing json returned by oötv api player response
- * Example url: https://ooetv.oetv.at/?oetvappapi=1&apikey=asHwzb75fybdUz96HSfC3kvNvgavT69z&method=nu-players&lastname=Engertsberger
+ * Class object representing json returned by ötv api player response
+ * Example url: https://ooetv.oetv.at/?oetvappapi=1&apikey=asHwzb75fybdUz96HSfC3kvNvgavT69z&method=nu-players&lastname=Berger
  */
 public class PlayerSearchData {
 
